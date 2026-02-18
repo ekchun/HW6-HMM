@@ -124,9 +124,9 @@ class HiddenMarkovModel:
             raise ValueError("Need at least 1 hidden state")
 
         #store probabilities of hidden state at each step - changed to log
-        log_viterbi_table = np.full((T, self.N), -np.inf)
+        log_viterbi_table = np.full((T, N), -np.inf)
         #store best path for traceback - I changed this to match the Stanford resource I was following
-        best_path = np.zeros((T, N))         
+        best_path = np.zeros((T, N), dtype=int)         
        
         first_obs_idx = self.observation_states_dict[decode_observation_states[0]] # index of first observation state
         log_viterbi_table[0] = (self.log_prior + self.log_emission[:, first_obs_idx])
@@ -144,15 +144,17 @@ class HiddenMarkovModel:
                 raise ValueError(f"No valid paths at step {t}")
 
         # Step 3. Traceback 
-        best_path_prob = np.max(log_viterbi_table[-1])
-        best_path_pointer = np.argmax(log_viterbi_table[-1])
-        best_hidden_state_sequence = [best_path_pointer]
+        # Step 3. Traceback
+        best_last_state = np.argmax(log_viterbi_table[-1])
+        best_hidden_state_indices = [best_last_state]
 
         # Step 4. Return best hidden state sequence 
         # Walk backwards through best_path chain
-        for t in range(T-1, 0, -1):
-            current = best_path[t, best_path_pointer]
-            best_hidden_state_sequence.insert(0, current)
+        for t in range(T - 1, 0, -1):
+            best_last_state = best_path[t, best_last_state]
+            best_hidden_state_indices.insert(0, best_last_state)
 
+        best_hidden_state_sequence = [self.hidden_states[i] for i in best_hidden_state_indices]
+    
         return best_hidden_state_sequence
         

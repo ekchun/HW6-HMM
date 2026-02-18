@@ -7,14 +7,14 @@ In this assignment, you'll implement the Forward and Viterbi Algorithms (dynamic
 Used https://web.stanford.edu/~jurafsky/slp3/A.pdf for forward algorithm, super helpful. https://www.cs.cmu.edu/~mgormley/courses/10601-s23/handouts/hw7_recitation_solution.pdf for help with log calculations and "log-sum-exponent trick' that I was seeing online (p. 17). And https://pieriantraining.com/viterbi-algorithm-implementation-in-python-a-practical-guide/ helpful as well.
 
   * Do your model probabilites add up to the correct values? Is scaling required?
-    Put into log scale jic but I mean I'm not sure it's requried for our test cases?
+    **Put into log scale jic but I mean I'm not sure it's requried for our test cases?**
   * How will your model handle zero-probability transitions? 
-    Raises ValueError if there's no path
+    **Raises ValueError if there's no path**
   * Are the inputs in compatible shapes/sizes with each other? 
-    Added private method (is that the correct term?) to do an initial input check
+    **Added private method (is that the correct term?) to do an initial input check**
   * Any other edge cases you can think of?
   * Ensure that your code accomodates at least 2 possible edge cases. 
-    Considered empty input sequence into forward and viterbi; considered empty hidden states array; added assertions to init to check that probability distributions look good... do these count.... also lots of extra edge case tests within the pytest. 
+    **Considered empty input sequence into forward and viterbi; considered empty hidden states array; added assertions to init to check that probability distributions look good... do these count.... also lots of extra edge case tests within the pytest. **
 
 
 # Assignment

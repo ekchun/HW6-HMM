@@ -3,18 +3,25 @@
 In this assignment, you'll implement the Forward and Viterbi Algorithms (dynamic programming). 
 
 
+# Eden's Notes
+Used https://web.stanford.edu/~jurafsky/slp3/A.pdf for forward algorithm, super helpful. https://www.cs.cmu.edu/~mgormley/courses/10601-s23/handouts/hw7_recitation_solution.pdf for help with log calculations and "log-sum-exponent trick' that I was seeing online (p. 17). And https://pieriantraining.com/viterbi-algorithm-implementation-in-python-a-practical-guide/ helpful as well.
+
+  * Do your model probabilites add up to the correct values? Is scaling required?
+    Put into log scale jic but I mean I'm not sure it's requried for our test cases?
+  * How will your model handle zero-probability transitions? 
+    Raises ValueError if there's no path
+  * Are the inputs in compatible shapes/sizes with each other? 
+    Added private method (is that the correct term?) to do an initial input check
+  * Any other edge cases you can think of?
+  * Ensure that your code accomodates at least 2 possible edge cases. 
+    Considered empty input sequence into forward and viterbi; considered empty hidden states array; added assertions to init to check that probability distributions look good... do these count.... also lots of extra edge case tests within the pytest. 
+
+
 # Assignment
 
 ## Overview 
 
 The goal of this assignment is to implement the Forward and Viterbi Algorithms for Hidden Markov Models (HMMs).
-
-For a helpful refresher on HMMs and the Forward and Viterbi Algorithms you can check out the resources [here](https://web.stanford.edu/~jurafsky/slp3/A.pdf), 
-[here](https://towardsdatascience.com/markov-and-hidden-markov-model-3eec42298d75), and [here](https://pieriantraining.com/viterbi-algorithm-implementation-in-python-a-practical-guide/). 
-
-
-
-
 
 ## Tasks and Data 
 Please complete the `forward` and `viterbi` functions in the HiddenMarkovModel class. 
@@ -26,38 +33,24 @@ We have provided two HMM models (mini_weather_hmm.npz and full_weather_hmm.npz) 
 * `transition_p`: transition probabilities of hidden states (in order given in `hidden_states`)
 * `emission_p`: emission probabilities (`hidden_states` --> `observation_states`)
 
-
-
 For both datasets, we also provide input observation sequences and the solution for their best hidden state sequences. 
- * `observation_state_sequence`: observation sequence to test 
+* `observation_state_sequence`: observation sequence to test 
 * `best_hidden_state_sequence`: correct viterbi hidden state sequence 
 
-
 Create an HMM class instance for both models and test that your Forward and Viterbi implementation returns the correct probabilities and hidden state sequence for each of the observation sequences.
-
-Within your code, consider the scope of the inputs and how the different parameters of the input data could break the bounds of your implementation.
-  * Do your model probabilites add up to the correct values? Is scaling required?
-  * How will your model handle zero-probability transitions? 
-  * Are the inputs in compatible shapes/sizes which each other? 
-  * Any other edge cases you can think of?
-  * Ensure that your code accomodates at least 2 possible edge cases. 
-
-Finally, please update your README with a brief description of your methods. 
-
-
 
 ## Task List
 
 [TODO] Complete the HiddenMarkovModel Class methods  <br>
-  [ ] complete the `forward` function in the HiddenMarkovModelClass <br>
-  [ ] complete the `viterbi` function in the HiddenMarkovModelClass <br>
+  [x] complete the `forward` function in the HiddenMarkovModelClass <br>
+  [x] complete the `viterbi` function in the HiddenMarkovModelClass <br>
 
 [TODO] Unit Testing  <br>
-  [ ] Ensure functionality on mini and full weather dataset <br>
-  [ ] Account for edge cases 
+  [x] Ensure functionality on mini and full weather dataset <br>
+  [x] Account for edge cases 
 
 [TODO] Packaging <br>
-  [ ] Update README with description of your methods <br>
+  [x] Update README with description of your methods <br>
   [ ] pip installable module (optional)<br>
   [ ] github actions (install + pytest) (optional)
 

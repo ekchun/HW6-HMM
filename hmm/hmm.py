@@ -144,7 +144,6 @@ class HiddenMarkovModel:
                 raise ValueError(f"No valid paths at step {t}")
 
         # Step 3. Traceback 
-        # Step 3. Traceback
         best_last_state = np.argmax(log_viterbi_table[-1])
         best_hidden_state_indices = [best_last_state]
 

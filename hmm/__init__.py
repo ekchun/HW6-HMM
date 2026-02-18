@@ -1,6 +1,6 @@
 """
-UCSF BMI203: Biocomputing Algorithms 2024
-Author:
+UCSF BMI203: Biocomputing Algorithms 2026
+Author: Eden C
 Date:
 Package: 
 Description: 
